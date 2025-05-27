@@ -1,0 +1,75 @@
+{
+  "analysis_timestamp": "2025-05-27T04:44:00Z",
+  "source_repo": "Mars-2468/EGOV-RTS-NMC",
+  "complexity_metrics": {
+    "modules": 6,
+    "estimated_loc": 15000,
+    "technology_stack": ["Java", "JSP", "JavaScript", "Maven", "Quartz"]
+  },
+  "critical_paths": [
+    {
+      "path": "citizen_registration",
+      "priority": 1,
+      "components": ["login", "registration", "validation"]
+    },
+    {
+      "path": "document_submission",
+      "priority": 1,
+      "components": ["file_upload", "metadata_entry", "submission"]
+    },
+    {
+      "path": "workflow_processing",
+      "priority": 1,
+      "components": ["task_assignment", "approval_flow", "notifications"]
+    },
+    {
+      "path": "report_generation",
+      "priority": 2,
+      "components": ["data_query", "report_render", "export"]
+    }
+  ],
+  "high_risk_areas": [
+    {
+      "area": "authentication",
+      "risk_level": "critical",
+      "test_priority": 1
+    },
+    {
+      "area": "file_upload_dms",
+      "risk_level": "critical",
+      "test_priority": 1
+    },
+    {
+      "area": "workflow_state_management",
+      "risk_level": "high",
+      "test_priority": 1
+    },
+    {
+      "area": "database_operations",
+      "risk_level": "high",
+      "test_priority": 2
+    },
+    {
+      "area": "mail_notifications",
+      "risk_level": "medium",
+      "test_priority": 3
+    }
+  ],
+  "test_priority_matrix": {
+    "p1_critical": [
+      "user_login",
+      "citizen_registration",
+      "file_upload_security",
+      "workflow_state_transitions"
+    ],
+    "p2_high": [
+      "report_generation",
+      "search_functionality",
+      "audit_logging"
+    ],
+    "p3_medium": [
+      "email_notifications",
+      "dashboard_widgets"
+    ]
+  }
+}
