@@ -1,0 +1,14 @@
+{
+  "failure_details": {
+    "test": "Document Submission",
+    "timestamp": "2025-05-27T04:46:35Z",
+    "error": "File upload element not found",
+    "attempted_selectors": [
+      "css: input[type=\"file\"]",
+      "xpath: //input[@accept=\".pdf,.doc,.docx\"]",
+      "nearText: 'Upload Document'"
+    ],
+    "page_url": "http://localhost:8080/RTSservices/pages/citizendocument/submit",
+    "recommendation": "Add data-testid='file-upload' to the file input element for stable selection"
+  }
+}
