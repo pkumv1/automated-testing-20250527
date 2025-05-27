@@ -1,0 +1,114 @@
+{
+  "execution_timestamp": "2025-05-27T04:47:00Z",
+  "test_run_summary": {
+    "total_tests": 4,
+    "passed": 3,
+    "failed": 1,
+    "duration_seconds": 145,
+    "browser": "chromium"
+  },
+  "self_healing_metrics": {
+    "total_element_searches": 42,
+    "healed_successfully": 18,
+    "healing_success_rate": "42.86%",
+    "failed_to_heal": 2,
+    "healing_by_tier": {
+      "tier1_id_testid": 22,
+      "tier2_css_context": 8,
+      "tier3_xpath_relative": 4,
+      "tier4_text_matching": 3,
+      "tier5_visual_pattern": 2,
+      "tier6_ai_detection": 1
+    }
+  },
+  "test_results": [
+    {
+      "test_name": "Critical Path: User Login",
+      "status": "passed",
+      "duration": 28,
+      "healing_events": [
+        {
+          "element": "password",
+          "original_selector": "id",
+          "healed_with": "css",
+          "selector_used": "input[type=\"password\"]"
+        }
+      ]
+    },
+    {
+      "test_name": "Critical Path: Citizen Registration",
+      "status": "passed",
+      "duration": 42,
+      "healing_events": [
+        {
+          "element": "firstName",
+          "original_selector": "id",
+          "healed_with": "nearText",
+          "selector_used": "nearText: 'First Name'"
+        },
+        {
+          "element": "submitButton",
+          "original_selector": "id",
+          "healed_with": "role",
+          "selector_used": "role: button, name: Submit"
+        }
+      ]
+    },
+    {
+      "test_name": "Critical Path: Document Submission",
+      "status": "failed",
+      "duration": 35,
+      "error": "File upload element not found after healing attempts",
+      "healing_events": [
+        {
+          "element": "documentType",
+          "original_selector": "id",
+          "healed_with": "xpath",
+          "selector_used": "//select[@name=\"documentType\"]"
+        }
+      ],
+      "screenshot": "test-results/failures/document-submission-failure.png"
+    },
+    {
+      "test_name": "Critical Path: Workflow Processing",
+      "status": "passed",
+      "duration": 40,
+      "healing_events": [
+        {
+          "element": "taskList",
+          "original_selector": "css",
+          "healed_with": "text",
+          "selector_used": "text: 'Task ID'"
+        },
+        {
+          "element": "approveButton",
+          "original_selector": "id",
+          "healed_with": "css",
+          "selector_used": "button[name=\"approve\"]"
+        }
+      ]
+    }
+  ],
+  "selector_adaptations": [
+    {
+      "original": "#username",
+      "adapted_to": "input[name=\"username\"]",
+      "reason": "ID not found, CSS name attribute stable"
+    },
+    {
+      "original": "#submitRegistration",
+      "adapted_to": "button[type=\"submit\"]:has-text(\"Submit\")",
+      "reason": "ID changed, text content stable"
+    },
+    {
+      "original": "tr.task-row:first-child",
+      "adapted_to": "//table[@id=\"taskList\"]//tr[2]",
+      "reason": "CSS class removed, XPath structure stable"
+    }
+  ],
+  "performance_metrics": {
+    "avg_healing_time_ms": 250,
+    "max_healing_time_ms": 820,
+    "min_healing_time_ms": 45
+  }
+}
