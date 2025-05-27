@@ -1,0 +1,55 @@
+{
+  "summary_timestamp": "2025-05-27T04:50:00Z",
+  "healing_success_rate": "42.86%",
+  "critical_failures": [
+    {
+      "failure": "Document Upload - File Input Not Found",
+      "impact": "Critical - Blocks citizen document submission",
+      "browsers_affected": ["chromium", "firefox", "webkit"],
+      "fix_priority": 1
+    },
+    {
+      "failure": "WebKit - Date Picker Incompatibility",
+      "impact": "High - Safari users cannot select dates",
+      "browsers_affected": ["webkit"],
+      "fix_priority": 2
+    }
+  ],
+  "performance_bottlenecks": {
+    "login_response_time": {
+      "baseline_ms": 850,
+      "under_load_ms": 3200,
+      "degradation": "276%"
+    },
+    "workflow_task_loading": {
+      "avg_time_ms": 2100,
+      "threshold_exceeded": true,
+      "recommendation": "Add pagination for task lists"
+    },
+    "network_latency_impact": {
+      "500ms_added_latency": "235% slower operations",
+      "timeout_risk": "Medium"
+    }
+  },
+  "security_issues": [
+    {
+      "issue": "Session Management",
+      "severity": "CRITICAL",
+      "details": "No session timeout detected during tests",
+      "cwe": "CWE-613"
+    },
+    {
+      "issue": "File Upload Validation",
+      "severity": "HIGH",
+      "details": "Client-side only validation for file types",
+      "cwe": "CWE-434"
+    }
+  ],
+  "test_coverage_metrics": {
+    "critical_paths_tested": 4,
+    "critical_paths_passed": 3,
+    "browsers_tested": 3,
+    "chaos_scenarios": 2,
+    "total_healing_adaptations": 30
+  }
+}
